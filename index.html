@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SECTOR VII</title>
+        <meta name="description" content="CLASSIFIED" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oxanium:wght@300;400;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="cursor" id="cursor"></div>
+        <div class="cursor-ring" id="cursorRing"></div>
+        <div class="noise"></div>
+        <div class="scanline"></div>
+
+        <!-- NAV -->
+        <nav class="nav" id="nav">
+            <a href="#" class="nav-logo">
+                <span class="logo-prefix">S</span
+                ><span class="logo-accent">VII</span>
+                <span class="logo-status blink">■</span>
+            </a>
+            <ul class="nav-links">
+                <li>
+                    <a href="#ops" class="nav-link"
+                        ><span class="nav-num">01</span> OPS</a
+                    >
+                </li>
+                <li>
+                    <a href="#intel" class="nav-link"
+                        ><span class="nav-num">02</span> INTEL</a
+                    >
+                </li>
+                <li>
+                    <a href="#contact" class="nav-link"
+                        ><span class="nav-num">03</span> CONTACT</a
+                    >
+                </li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#ops" class="mobile-link">OPS</a></li>
+                <li><a href="#intel" class="mobile-link">INTEL</a></li>
+                <li><a href="#contact" class="mobile-link">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-grid"></div>
+
+            <div class="hero-hud hud-tl">
+                <span>LAT 23.41°N</span>
+                <span>LON 088.82°E</span>
+            </div>
+            <div class="hero-hud hud-tr">
+                <span>STATUS: <span class="accent">ACTIVE</span></span>
+                <span id="heroTime">00:00:00Z</span>
+            </div>
+            <div class="hero-hud hud-bl">
+                <span>CLEARANCE: LEVEL VII</span>
+            </div>
+            <div class="hero-hud hud-br">
+                <span>ENC // AES-256</span>
+            </div>
+
+            <div class="hero-content">
+                <div class="hero-tag reveal">
+                    <span class="redact">████</span> CLASSIFIED
+                    <span class="redact">████</span>
+                </div>
+                <h1 class="hero-title reveal">
+                    <span class="line">SECTOR</span>
+                    <span class="line hero-vii"
+                        >VII<span class="cursor-blink">_</span></span
+                    >
+                </h1>
+                <div class="hero-divider reveal"></div>
+                <p class="hero-sub reveal">
+                    INDEPENDENT GAME DEVELOPMENT UNIT<br />
+                    <span class="redact"
+                        >████████████████████████████████████</span
+                    >
+                </p>
+                <div class="hero-cta reveal">
+                    <a href="#ops" class="btn-primary">ACCESS OPERATIONS</a>
+                    <a href="#contact" class="btn-ghost">REQUEST BRIEFING</a>
+                </div>
+            </div>
+
+            <div class="hero-side">
+                <div class="hero-ticker" id="ticker">
+                    <span>SECTOR VII</span>
+                    <span class="accent">///</span>
+                    <span>AUTHORIZED ONLY</span>
+                    <span class="accent">///</span>
+                    <span>CLASSIFIED</span>
+                    <span class="accent">///</span>
+                    <span>SECTOR VII</span>
+                    <span class="accent">///</span>
+                    <span>AUTHORIZED ONLY</span>
+                    <span class="accent">///</span>
+                    <span>CLASSIFIED</span>
+                    <span class="accent">///</span>
+                </div>
+            </div>
+
+            <div class="scroll-indicator reveal">
+                <span>SCROLL</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- OPS -->
+        <section class="ops" id="ops">
+            <div class="section-header reveal">
+                <span class="section-num">01</span>
+                <h2 class="section-title">ACTIVE OPERATIONS</h2>
+                <span class="section-tag">DEPLOYED // ANDROID</span>
+            </div>
+
+            <div class="game-feature reveal">
+                <!-- Left: Visual -->
+                <div class="game-visual">
+                    <div class="game-art checkmate">
+                        <div class="board-grid"></div>
+                        <div class="chessboard-mini" id="chessboardMini"></div>
+                        <div class="piece-glow"></div>
+                        <div class="game-hud-tl">OP // CHECKMATE-PROTOCOL</div>
+                        <div class="game-hud-br">
+                            <span class="status-dot active"></span>
+                            <span>LIVE ON PLAY STORE</span>
+                        </div>
+                    </div>
+                    <!-- Screenshot strip placeholder -->
+                    <div class="screenshot-strip">
+                        <div class="screenshot-frame">
+                            <div class="screenshot-inner">
+                                <span
+                                    class="mono"
+                                    style="
+                                        font-size: 0.5rem;
+                                        color: var(--text-dim);
+                                    "
+                                    >SCR // 01</span
+                                >
+                            </div>
+                        </div>
+                        <div class="screenshot-frame">
+                            <div class="screenshot-inner">
+                                <span
+                                    class="mono"
+                                    style="
+                                        font-size: 0.5rem;
+                                        color: var(--text-dim);
+                                    "
+                                    >SCR // 02</span
+                                >
+                            </div>
+                        </div>
+                        <div class="screenshot-frame">
+                            <div class="screenshot-inner">
+                                <span
+                                    class="mono"
+                                    style="
+                                        font-size: 0.5rem;
+                                        color: var(--text-dim);
+                                    "
+                                    >SCR // 03</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Info -->
+                <div class="game-info">
+                    <div class="game-meta">
+                        <span class="game-label">OPERATION DESIGNATION</span>
+                        <h2 class="game-title">
+                            CHECKMATE<br /><span class="accent">PROTOCOL</span>
+                        </h2>
+                    </div>
+
+                    <div class="game-divider"></div>
+
+                    <p class="game-desc">
+                        [PLACEHOLDER — ADD YOUR GAME DESCRIPTION HERE. Keep it
+                        punchy. One paragraph max. Sell the feeling, not the
+                        mechanics.]
+                    </p>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <span class="feature-icon accent">⬡</span>
+                            <div>
+                                <div class="feature-label">GENRE</div>
+                                <div class="feature-val">PLACEHOLDER</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon accent">⬡</span>
+                            <div>
+                                <div class="feature-label">PLATFORM</div>
+                                <div class="feature-val">ANDROID</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon accent">⬡</span>
+                            <div>
+                                <div class="feature-label">STATUS</div>
+                                <div class="feature-val accent">DEPLOYED</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon accent">⬡</span>
+                            <div>
+                                <div class="feature-label">CLEARANCE</div>
+                                <div class="feature-val">FREE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-divider"></div>
+
+                    <div class="game-cta">
+                        <a
+                            href="https://play.google.com/store"
+                            class="btn-primary btn-play"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                style="flex-shrink: 0"
+                            >
+                                <path
+                                    d="M3 20.5v-17c0-.83 1-.83 1.5-.5l15 8.5-15 8.5c-.5.33-1.5.33-1.5-.5z"
+                                />
+                            </svg>
+                            GET ON GOOGLE PLAY
+                        </a>
+                        <a href="#contact" class="btn-ghost">PRESS INQUIRY</a>
+                    </div>
+
+                    <div class="game-stats-row">
+                        <div class="game-stat">
+                            <div class="game-stat-num accent">—</div>
+                            <div class="game-stat-label">PLACEHOLDER STAT</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-num accent">—</div>
+                            <div class="game-stat-label">PLACEHOLDER STAT</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="game-stat-num accent">—</div>
+                            <div class="game-stat-label">PLACEHOLDER STAT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming -->
+            <div class="upcoming-bar reveal">
+                <span
+                    class="mono"
+                    style="
+                        font-size: 0.6rem;
+                        letter-spacing: 0.2em;
+                        color: var(--text-dim);
+                    "
+                    >NEXT OPERATION</span
+                >
+                <div class="upcoming-divider"></div>
+                <span
+                    class="mono"
+                    style="
+                        font-size: 0.6rem;
+                        letter-spacing: 0.2em;
+                        color: var(--accent);
+                    "
+                    >// CLASSIFIED //</span
+                >
+                <div class="upcoming-divider" style="flex: 1"></div>
+                <span class="status-dot pending"></span>
+                <span
+                    class="mono"
+                    style="
+                        font-size: 0.6rem;
+                        letter-spacing: 0.14em;
+                        color: var(--text-dim);
+                    "
+                    >UNANNOUNCED</span
+                >
+            </div>
+        </section>
+
+        <!-- INTEL -->
+        <section class="intel" id="intel">
+            <div class="section-header reveal">
+                <span class="section-num">02</span>
+                <h2 class="section-title">INTEL BRIEF</h2>
+                <span class="section-tag">EYES ONLY</span>
+            </div>
+
+            <div class="intel-layout">
+                <div class="intel-dossier reveal">
+                    <div class="dossier-field">
+                        <span class="field-label">DESIGNATION</span>
+                        <span class="field-value">SECTOR VII</span>
+                    </div>
+                    <div class="dossier-field">
+                        <span class="field-label">UNIT TYPE</span>
+                        <span class="field-value"
+                            >INDEPENDENT //
+                            <span class="redact small">████████</span></span
+                        >
+                    </div>
+                    <div class="dossier-field">
+                        <span class="field-label">ESTABLISHED</span>
+                        <span class="field-value"
+                            >2024 //
+                            <span class="redact small">████████</span></span
+                        >
+                    </div>
+                    <div class="dossier-field">
+                        <span class="field-label">LOCATION</span>
+                        <span class="field-value"
+                            ><span class="redact">██████████████</span></span
+                        >
+                    </div>
+                    <div class="dossier-field">
+                        <span class="field-label">DIRECTIVE</span>
+                        <span class="field-value">BUILD. SHIP. ITERATE.</span>
+                    </div>
+                    <div class="dossier-field">
+                        <span class="field-label">CLEARANCE REQ.</span>
+                        <span class="field-value accent">LEVEL VII</span>
+                    </div>
+                </div>
+
+                <div class="intel-right">
+                    <div class="intel-stats reveal">
+                        <div class="stat">
+                            <div class="stat-num accent">01</div>
+                            <div class="stat-label">DEPLOYED OP</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num accent">
+                                <span class="redact">██</span>
+                            </div>
+                            <div class="stat-label">IN DEVELOPMENT</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num accent">VII</div>
+                            <div class="stat-label">SECTOR</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">
+                                <span class="redact">████</span>
+                            </div>
+                            <div class="stat-label">CLASSIFIED</div>
+                        </div>
+                    </div>
+
+                    <div class="intel-warning reveal">
+                        <span class="warn-icon">⚠</span>
+                        <span
+                            >UNAUTHORIZED ACCESS TO SECTOR VII OPERATIONS IS A
+                            BREACH OF PROTOCOL. ALL ACTIVITY IS LOGGED AND
+                            MONITORED.</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact" id="contact">
+            <div class="section-header reveal">
+                <span class="section-num">03</span>
+                <h2 class="section-title">SECURE CHANNEL</h2>
+                <span class="section-tag">ENCRYPTED</span>
+            </div>
+
+            <div class="contact-layout">
+                <div class="contact-left reveal">
+                    <p class="contact-lead">
+                        TRANSMISSION REQUESTS.<br />PRESS. COLLABORATION.<br />INTELLIGENCE
+                        SHARING.
+                    </p>
+                    <div class="contact-channel">
+                        <span class="field-label">CHANNEL</span>
+                        <span class="contact-email"
+                            >hello<span class="accent">@</span
+                            >sectorvii.dev</span
+                        >
+                    </div>
+                    <div class="contact-socials">
+                        <a href="#" class="social-link">// TWITTER</a>
+                        <a href="#" class="social-link">// ITCH.IO</a>
+                        <a href="#" class="social-link">// GITHUB</a>
+                    </div>
+                </div>
+                <div class="contact-right reveal">
+                    <div class="contact-box">
+                        <div class="form-header">INITIATE TRANSMISSION</div>
+                        <input
+                            class="field"
+                            type="text"
+                            placeholder="CALLSIGN"
+                        />
+                        <input
+                            class="field"
+                            type="email"
+                            placeholder="SECURE EMAIL"
+                        />
+                        <textarea
+                            class="field"
+                            rows="5"
+                            placeholder="MESSAGE // KEEP IT BRIEF"
+                        ></textarea>
+                        <button class="btn-submit" id="submitBtn">
+                            TRANSMIT
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-left">
+                SECTOR VII // ALL RIGHTS RESERVED //
+                <span class="redact small">████</span>
+            </div>
+            <div class="footer-logo">S<span class="accent">VII</span></div>
+            <div class="footer-right">CLEARANCE REQUIRED</div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
