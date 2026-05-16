@@ -36,6 +36,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -47,6 +48,7 @@ body {
     overflow-x: hidden;
     cursor: none;
     letter-spacing: 0.02em;
+    min-width: 0;
 }
 
 /* ─── CURSOR ─── */
@@ -279,6 +281,7 @@ body {
     justify-content: center;
     padding: 120px 48px 80px;
     overflow: hidden;
+    width: 100%;
 }
 .hero-grid {
     position: absolute;
@@ -539,6 +542,8 @@ section {
     padding: 100px 48px;
     max-width: 1400px;
     margin: 0 auto;
+    width: 100%;
+    min-width: 0;
 }
 .section-header {
     display: flex;
@@ -593,6 +598,7 @@ section {
     flex-direction: column;
     gap: 1px;
     background: var(--border-hard);
+    min-width: 0;
 }
 .game-art {
     height: 340px;
@@ -738,6 +744,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    min-width: 0;
 }
 .game-label {
     font-family: var(--mono);
@@ -887,12 +894,15 @@ section {
     background: var(--bg-raised);
     max-width: 100%;
     padding: 100px 48px;
+    width: 100%;
+    overflow-x: hidden;
 }
 .intel .section-header,
 .intel-layout {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 .intel-layout {
     display: grid;
@@ -906,9 +916,10 @@ section {
 }
 .dossier-field {
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: minmax(120px, 160px) 1fr;
     gap: 0;
     border-bottom: 1px solid var(--border);
+    min-width: 0;
 }
 .field-label {
     font-family: var(--mono);
@@ -924,6 +935,8 @@ section {
     letter-spacing: 0.1em;
     color: var(--text-mid);
     padding: 14px 20px;
+    word-break: break-word;
+    min-width: 0;
 }
 .intel-right {
     background: var(--bg-raised);
@@ -977,6 +990,8 @@ section {
 /* ─── CONTACT ─── */
 .contact {
     max-width: 1400px;
+    width: 100%;
+    min-width: 0;
 }
 .contact-layout {
     display: grid;
@@ -1123,21 +1138,31 @@ section {
 }
 
 /* ─── RESPONSIVE ─── */
-@media (max-width: 1024px) {
+
+/* Tablet landscape: collapse two-column feature & intel */
+@media (max-width: 1100px) {
     .game-feature {
         grid-template-columns: 1fr;
     }
     .intel-layout {
         grid-template-columns: 1fr;
     }
+    .game-art {
+        height: 280px;
+    }
+    .game-info {
+        padding: 36px 36px;
+    }
 }
 
+/* Tablet portrait */
 @media (max-width: 768px) {
+    /* Nav */
     .nav {
-        padding: 14px 24px;
+        padding: 14px 20px;
     }
     .nav.scrolled {
-        padding: 10px 24px;
+        padding: 10px 20px;
     }
     .nav-links {
         display: none;
@@ -1145,43 +1170,135 @@ section {
     .nav-toggle {
         display: flex;
     }
+
+    /* Hero */
     .hero {
-        padding: 100px 24px 72px;
+        padding: 90px 20px 64px;
     }
     .hero-side {
         display: none;
     }
-    .hud-tr,
-    .hud-br {
-        right: 24px;
+    .hud-tr {
+        right: 20px;
     }
+    .hud-br {
+        right: 20px;
+    }
+    .hud-bl {
+        bottom: 44px;
+        left: 20px;
+    }
+    .hero-sub {
+        font-size: 0.65rem;
+    }
+    .scroll-indicator {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    /* Sections */
     section {
-        padding: 72px 24px;
+        padding: 64px 20px;
     }
     .intel {
-        padding: 72px 24px;
+        padding: 64px 20px;
     }
-    .game-info {
-        padding: 32px 24px;
+
+    /* Section header — allow section-tag to wrap or hide */
+    .section-header {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 40px;
     }
-    .feature-grid {
+    .section-tag {
+        display: none;
+    }
+
+    /* Game feature */
+    .game-feature {
         grid-template-columns: 1fr;
     }
+    .game-art {
+        height: 240px;
+    }
+    .game-info {
+        padding: 28px 20px;
+        gap: 20px;
+    }
+    .game-title {
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
+    }
+
+    /* Feature grid — 2 cols on tablet */
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .feature-item {
+        padding: 12px 14px;
+    }
+
+    /* Screenshot strip — horizontal scroll on small tablet */
+    .screenshot-strip {
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
+    }
+
+    /* Game stats */
     .game-stats-row {
         grid-template-columns: repeat(3, 1fr);
     }
+    .game-stat {
+        padding: 16px 10px;
+    }
+    .game-stat-num {
+        font-size: 1.4rem;
+    }
+
+    /* Upcoming bar — simplify */
+    .upcoming-bar {
+        padding: 14px 16px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    /* Intel */
+    .intel-layout {
+        grid-template-columns: 1fr;
+    }
+    .intel-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+        padding: 24px 16px;
+    }
+    .stat-num {
+        font-size: 2rem;
+    }
+    .dossier-field {
+        grid-template-columns: 130px 1fr;
+    }
+
+    /* Contact */
     .contact-layout {
         grid-template-columns: 1fr;
     }
     .contact-left {
-        padding: 32px 24px;
+        padding: 28px 20px;
+        gap: 20px;
     }
+    .contact-email {
+        font-size: 0.85rem;
+    }
+
+    /* Footer */
     .footer {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         text-align: center;
-        padding: 20px;
+        padding: 18px 20px;
     }
+
+    /* Cursor — disable on touch */
     .cursor,
     .cursor-ring {
         display: none;
@@ -1192,24 +1309,44 @@ section {
     .btn-submit {
         cursor: pointer;
     }
-    .scroll-indicator {
-        display: none;
-    }
 }
 
+/* Mobile — 480px and below */
 @media (max-width: 480px) {
+    /* Nav */
+    .nav {
+        padding: 12px 16px;
+    }
+    .nav.scrolled {
+        padding: 10px 16px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 80px 16px 56px;
+        min-height: 100svh;
+    }
     .hero-title {
-        font-size: clamp(3.5rem, 15vw, 5.5rem);
+        font-size: clamp(3.2rem, 18vw, 5rem);
+    }
+    .hero-divider {
+        margin: 20px 0;
+    }
+    .hero-sub {
+        font-size: 0.62rem;
+        margin-bottom: 28px;
     }
     .hero-cta {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        gap: 10px;
     }
     .btn-primary,
     .btn-ghost {
         width: 100%;
         text-align: center;
         justify-content: center;
+        display: flex;
     }
     .hud-tl,
     .hud-tr,
@@ -1217,13 +1354,203 @@ section {
     .hud-br {
         display: none;
     }
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* Sections */
+    section {
+        padding: 52px 16px;
+    }
+    .intel {
+        padding: 52px 16px;
+    }
+    .section-header {
+        margin-bottom: 28px;
+        padding-bottom: 12px;
+    }
+    .section-title {
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+    }
+
+    /* Game feature */
+    .game-art {
+        height: 200px;
+    }
+    .chessboard-mini {
+        transform: translate(-50%, -50%) scale(0.75);
+    }
+    .game-hud-tl {
+        font-size: 0.45rem;
+    }
+    .game-hud-br {
+        font-size: 0.45rem;
+    }
+    .game-info {
+        padding: 24px 16px;
+        gap: 18px;
+    }
+    .game-label {
+        font-size: 0.5rem;
+    }
+    .game-title {
+        font-size: clamp(1.6rem, 10vw, 2.2rem);
+    }
+    .game-desc {
+        font-size: 0.82rem;
+    }
+
+    /* Feature grid — single col on small mobile */
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    .feature-item {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    .feature-label {
+        font-size: 0.48rem;
+    }
+    .feature-val {
+        font-size: 0.65rem;
+    }
+    .feature-icon {
+        font-size: 0.6rem;
+    }
+
+    /* Screenshot strip — fixed height, horizontal scroll */
+    .screenshot-strip {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 1px;
+    }
+    .screenshot-strip::-webkit-scrollbar {
+        display: none;
+    }
+    .screenshot-frame {
+        flex: 0 0 100px;
+        aspect-ratio: 9/16;
+    }
+
+    /* CTA buttons */
     .game-cta {
         flex-direction: column;
+        gap: 10px;
     }
     .game-cta .btn-primary,
     .game-cta .btn-ghost {
         width: 100%;
-        text-align: center;
         justify-content: center;
+        text-align: center;
+        display: flex;
+    }
+    .btn-play {
+        padding: 14px 20px;
+        font-size: 0.65rem;
+        letter-spacing: 0.14em;
+    }
+
+    /* Stats row */
+    .game-stats-row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .game-stat {
+        padding: 14px 8px;
+    }
+    .game-stat-num {
+        font-size: 1.2rem;
+    }
+    .game-stat-label {
+        font-size: 0.42rem;
+        letter-spacing: 0.1em;
+    }
+
+    /* Upcoming bar */
+    .upcoming-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px 16px;
+        justify-content: center;
+    }
+
+    /* Intel — stack stats 2x2 on mobile */
+    .intel-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    .stat {
+        padding: 20px 16px;
+    }
+    .stat-num {
+        font-size: 1.8rem;
+    }
+
+    /* Dossier — collapse label/value to stacked */
+    .dossier-field {
+        grid-template-columns: 1fr;
+    }
+    .field-label {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px 6px;
+        font-size: 0.5rem;
+    }
+    .field-value {
+        padding: 6px 16px 10px;
+        font-size: 0.65rem;
+    }
+
+    /* Contact */
+    .contact-left {
+        padding: 24px 16px;
+    }
+    .contact-lead {
+        font-size: 1.1rem;
+    }
+    .contact-email {
+        font-size: 0.78rem;
+        word-break: break-all;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 16px;
+    }
+    .footer-left {
+        font-size: 0.5rem;
+    }
+    .footer-right {
+        font-size: 0.5rem;
+    }
+}
+
+/* Tiny phones — 360px */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: clamp(2.8rem, 20vw, 3.5rem);
+    }
+    .hero {
+        padding: 72px 14px 48px;
+    }
+    section {
+        padding: 44px 14px;
+    }
+    .intel {
+        padding: 44px 14px;
+    }
+    .game-info {
+        padding: 20px 14px;
+    }
+    .contact-left {
+        padding: 20px 14px;
+    }
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    .game-stats-row {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
