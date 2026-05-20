@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Checkmate Protocol</title>
+
+        <meta
+            name="description"
+            content="Checkmate Protocol — Tactical chess warfare fused with ranged combat."
+        />
+
+        <link rel="stylesheet" href="style.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oxanium:wght@300;400;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            /* ───────────────────────────── */
+            /* CHECKMATE PROTOCOL OVERRIDES */
+            /* ───────────────────────────── */
+
+            .cmp-hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .cmp-layout {
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 60px;
+                align-items: center;
+                width: 100%;
+                position: relative;
+                z-index: 2;
+            }
+
+            .cmp-title {
+                font-size: clamp(3.2rem, 9vw, 8rem);
+                line-height: 0.9;
+            }
+
+            .cmp-sub {
+                max-width: 720px;
+                margin-top: 28px;
+            }
+
+            .cmp-actions {
+                display: flex;
+                gap: 14px;
+                margin-top: 40px;
+                flex-wrap: wrap;
+            }
+
+            .cmp-visual {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 1;
+                max-width: 520px;
+                margin-inline: auto;
+                border: 1px solid var(--border-hard);
+                background: var(--bg-deep);
+                overflow: hidden;
+            }
+
+            .cmp-visual::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(
+                    circle at center,
+                    rgba(200, 64, 64, 0.12),
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+
+            .cmp-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0.4) 100%
+                );
+                pointer-events: none;
+            }
+
+            .cmp-tagline {
+                position: absolute;
+                bottom: 18px;
+                left: 18px;
+                font-family: var(--mono);
+                font-size: 0.58rem;
+                letter-spacing: 0.18em;
+                color: var(--text-dim);
+            }
+
+            .cmp-status {
+                position: absolute;
+                top: 18px;
+                right: 18px;
+                font-family: var(--mono);
+                font-size: 0.58rem;
+                letter-spacing: 0.16em;
+                color: var(--accent);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .cmp-section {
+                position: relative;
+            }
+
+            .cmp-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1px;
+                background: var(--border-hard);
+            }
+
+            .cmp-card {
+                background: var(--bg-raised);
+                padding: 28px;
+                min-height: 220px;
+            }
+
+            .cmp-card-title {
+                font-family: var(--mono);
+                font-size: 0.7rem;
+                letter-spacing: 0.18em;
+                color: var(--accent);
+                margin-bottom: 22px;
+            }
+
+            .cmp-card p {
+                color: var(--text-muted);
+                line-height: 1.8;
+                font-size: 0.92rem;
+            }
+
+            .cmp-download {
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            .cmp-download .btn-primary {
+                min-width: 260px;
+                justify-content: center;
+            }
+
+            .cmp-legal {
+                margin-top: 40px;
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .cmp-legal a {
+                font-family: var(--mono);
+                font-size: 0.65rem;
+                letter-spacing: 0.16em;
+                color: var(--text-dim);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+            .cmp-legal a:hover {
+                color: var(--accent);
+            }
+
+            /* ───────────────────────────── */
+            /* TABLET */
+            /* ───────────────────────────── */
+
+            @media (max-width: 1100px) {
+                .cmp-layout {
+                    grid-template-columns: 1fr;
+                    gap: 50px;
+                }
+
+                .cmp-visual {
+                    max-width: 440px;
+                }
+
+                .cmp-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /* ───────────────────────────── */
+            /* MOBILE */
+            /* ───────────────────────────── */
+
+            /* ── 768px tablet portrait ── */
+            @media (max-width: 768px) {
+                .cmp-hero {
+                    padding: 90px 20px 64px;
+                }
+                .cmp-title {
+                    font-size: clamp(2.6rem, 14vw, 5rem);
+                }
+                .cmp-sub {
+                    font-size: 0.65rem;
+                    line-height: 1.9;
+                }
+                .hud-tr {
+                    right: 20px;
+                }
+                .hud-br {
+                    right: 20px;
+                }
+                .hud-bl {
+                    bottom: 44px;
+                    left: 20px;
+                }
+                .cmp-actions {
+                    flex-direction: column;
+                    width: 100%;
+                }
+                .cmp-actions a {
+                    width: 100%;
+                    justify-content: center;
+                    text-align: center;
+                    display: flex;
+                }
+                .cmp-visual {
+                    max-width: 100%;
+                }
+                .cmp-card {
+                    padding: 22px;
+                    min-height: unset;
+                }
+                .intel-layout {
+                    grid-template-columns: 1fr;
+                }
+                .intel-stats {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+                .stat {
+                    padding: 24px 16px;
+                }
+                .stat-num {
+                    font-size: 2rem;
+                }
+                .dossier-field {
+                    grid-template-columns: 130px 1fr;
+                }
+                .cmp-download .btn-primary {
+                    width: 100%;
+                    min-width: unset;
+                }
+                .footer {
+                    flex-direction: column;
+                    gap: 8px;
+                    text-align: center;
+                    padding: 18px 20px;
+                }
+            }
+
+            /* ── 480px mobile ── */
+            @media (max-width: 480px) {
+                .cmp-hero {
+                    padding: 80px 16px 56px;
+                    min-height: 100svh;
+                }
+                .cmp-layout {
+                    gap: 36px;
+                }
+                .cmp-title {
+                    font-size: clamp(2.2rem, 16vw, 4rem);
+                    line-height: 0.95;
+                }
+                .hero-divider {
+                    margin: 20px 0;
+                }
+                .cmp-sub {
+                    font-size: 0.62rem;
+                    margin-bottom: 28px;
+                }
+                .hud-tl,
+                .hud-tr,
+                .hud-bl,
+                .hud-br {
+                    display: none;
+                }
+                .scroll-indicator {
+                    display: none;
+                }
+                .section-header {
+                    margin-bottom: 28px;
+                    padding-bottom: 12px;
+                }
+                .section-title {
+                    font-size: 1.2rem;
+                    letter-spacing: 0.08em;
+                }
+                .cmp-visual {
+                    max-width: 100%;
+                }
+                .cmp-tagline,
+                .cmp-status {
+                    font-size: 0.48rem;
+                }
+                .cmp-card {
+                    padding: 20px 18px;
+                }
+                .cmp-card p {
+                    font-size: 0.84rem;
+                }
+                .intel-stats {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .stat {
+                    padding: 20px 16px;
+                }
+                .stat-num {
+                    font-size: 1.8rem;
+                }
+                .dossier-field {
+                    grid-template-columns: 1fr;
+                }
+                .field-label {
+                    border-right: none;
+                    border-bottom: 1px solid var(--border);
+                    padding: 10px 16px 6px;
+                    font-size: 0.5rem;
+                }
+                .field-value {
+                    padding: 6px 16px 10px;
+                    font-size: 0.65rem;
+                }
+                .cmp-download .btn-primary {
+                    width: 100%;
+                    min-width: unset;
+                }
+                .footer {
+                    padding: 16px;
+                }
+                .footer-left,
+                .footer-right {
+                    font-size: 0.5rem;
+                }
+            }
+
+            /* ── 360px tiny phones ── */
+            @media (max-width: 360px) {
+                .cmp-hero {
+                    padding: 72px 14px 48px;
+                }
+                .cmp-title {
+                    font-size: clamp(1.9rem, 18vw, 3rem);
+                }
+                section {
+                    padding: 44px 14px;
+                }
+                .intel {
+                    padding: 44px 14px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- CURSOR -->
+
+        <div class="cursor" id="cursor"></div>
+        <div class="cursor-ring" id="cursorRing"></div>
+
+        <!-- FX -->
+
+        <div class="noise"></div>
+        <div class="scanline"></div>
+
+        <!-- NAV -->
+
+        <nav class="nav" id="nav">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-prefix">CHECKMATE</span>
+                <span class="logo-accent">PROTOCOL</span>
+                <span class="logo-status blink">■</span>
+            </a>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="#overview" class="nav-link">
+                        <span class="nav-num">01</span>
+                        OVERVIEW
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#systems" class="nav-link">
+                        <span class="nav-num">02</span>
+                        SYSTEMS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#deploy" class="nav-link">
+                        <span class="nav-num">03</span>
+                        DEPLOY
+                    </a>
+                </li>
+            </ul>
+
+            <!-- MOBILE -->
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        <!-- MOBILE MENU -->
+
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li>
+                    <a href="#overview" class="mobile-link"> OVERVIEW </a>
+                </li>
+
+                <li>
+                    <a href="#systems" class="mobile-link"> SYSTEMS </a>
+                </li>
+
+                <li>
+                    <a href="#deploy" class="mobile-link"> DEPLOY </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- HERO -->
+
+        <section class="hero cmp-hero">
+            <div class="hero-grid"></div>
+
+            <div class="hero-hud hud-tl">
+                <span>CHECKMATE PROTOCOL</span>
+                <span>BUILD // v1.0</span>
+            </div>
+
+            <div class="hero-hud hud-tr">
+                <span>STATUS: <span class="accent">DEPLOYED</span></span>
+                <span id="heroTime">00:00:00Z</span>
+            </div>
+
+            <div class="hero-hud hud-bl">
+                <span>TACTICAL CHESS WARFARE</span>
+            </div>
+
+            <div class="hero-hud hud-br">
+                <span>SECTOR VII NETWORK</span>
+            </div>
+
+            <div class="cmp-layout">
+                <!-- LEFT -->
+
+                <div class="hero-content">
+                    <div class="hero-tag reveal">CLASSIFIED OPERATION</div>
+
+                    <h1 class="hero-title cmp-title reveal">
+                        <span class="line"> CHECKMATE </span>
+
+                        <span class="line hero-vii">
+                            PROTOCOL<span class="cursor-blink">_</span>
+                        </span>
+                    </h1>
+
+                    <div class="hero-divider reveal"></div>
+
+                    <p class="hero-sub cmp-sub reveal">
+                        CLASSICAL CHESS RECONSTRUCTED INTO A TACTICAL COMBAT
+                        SYSTEM. POSITIONAL WARFARE, RANGED ATTACKS, SHIELDING,
+                        PRESSURE MANAGEMENT, AND CALCULATED EXECUTION.
+                    </p>
+
+                    <div class="cmp-actions reveal">
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.mezzmr.cmp"
+                            class="btn-primary"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            DOWNLOAD NOW
+                        </a>
+
+                        <a href="#overview" class="btn-ghost">
+                            ACCESS DOSSIER
+                        </a>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="cmp-visual reveal">
+                    <div class="board-grid"></div>
+
+                    <div class="chessboard-mini" id="chessboardMini"></div>
+
+                    <div class="piece-glow"></div>
+
+                    <div class="cmp-overlay"></div>
+
+                    <div class="cmp-tagline">CHESS // WEAPONIZED</div>
+
+                    <div class="cmp-status">
+                        <span class="status-dot active"></span>
+
+                        LIVE ENGAGEMENT
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OVERVIEW -->
+
+        <section class="cmp-section" id="overview">
+            <div class="section-header reveal">
+                <span class="section-num">01</span>
+
+                <h2 class="section-title">OPERATION OVERVIEW</h2>
+
+                <span class="section-tag"> AUTHORIZED </span>
+            </div>
+
+            <div class="cmp-grid reveal">
+                <div class="cmp-card">
+                    <div class="cmp-card-title">CORE DIRECTIVE</div>
+
+                    <p>
+                        Checkmate Protocol preserves the strategic structure of
+                        traditional chess while introducing active combat
+                        systems and tactical battlefield control.
+                    </p>
+                </div>
+
+                <div class="cmp-card">
+                    <div class="cmp-card-title">COMBAT SYSTEM</div>
+
+                    <p>
+                        Pieces can attack through ranged mechanics, apply
+                        pressure zones, and force engagements beyond classical
+                        capture rules.
+                    </p>
+                </div>
+
+                <div class="cmp-card">
+                    <div class="cmp-card-title">DEFENSIVE SYSTEM</div>
+
+                    <p>
+                        Shielding mechanics allow tactical survival, layered
+                        defense, and counterplay under hostile pressure.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYSTEMS -->
+
+        <section class="intel" id="systems">
+            <div class="section-header reveal">
+                <span class="section-num">02</span>
+
+                <h2 class="section-title">TACTICAL SYSTEMS</h2>
+
+                <span class="section-tag"> FIELD INTEL </span>
+            </div>
+
+            <div class="intel-layout reveal">
+                <div class="intel-dossier">
+                    <div class="dossier-field">
+                        <span class="field-label">GENRE</span>
+                        <span class="field-value">
+                            STRATEGY / TACTICAL COMBAT
+                        </span>
+                    </div>
+
+                    <div class="dossier-field">
+                        <span class="field-label">PLATFORM</span>
+                        <span class="field-value"> ANDROID </span>
+                    </div>
+
+                    <div class="dossier-field">
+                        <span class="field-label">MODE</span>
+                        <span class="field-value"> PLAYER VS PLAYER </span>
+                    </div>
+
+                    <div class="dossier-field">
+                        <span class="field-label">STATUS</span>
+                        <span class="field-value accent"> DEPLOYED </span>
+                    </div>
+
+                    <div class="dossier-field">
+                        <span class="field-label">NETWORK</span>
+                        <span class="field-value"> SECTOR VII </span>
+                    </div>
+                </div>
+
+                <div class="intel-right">
+                    <div class="intel-stats">
+                        <div class="stat">
+                            <div class="stat-num accent">8x8</div>
+
+                            <div class="stat-label">GRID</div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="stat-num accent">PVP</div>
+
+                            <div class="stat-label">ENGAGEMENT</div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="stat-num accent">LIVE</div>
+
+                            <div class="stat-label">STATUS</div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="stat-num accent">VII</div>
+
+                            <div class="stat-label">SECTOR</div>
+                        </div>
+                    </div>
+
+                    <div class="intel-warning">
+                        <span class="warn-icon">⚠</span>
+
+                        <span>
+                            EXPECT HIGHLY AGGRESSIVE TACTICAL ENCOUNTERS. EVERY
+                            PIECE IS A WEAPON.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEPLOY -->
+
+        <section id="deploy">
+            <div class="section-header reveal">
+                <span class="section-num">03</span>
+
+                <h2 class="section-title">DEPLOYMENT</h2>
+
+                <span class="section-tag"> GOOGLE PLAY </span>
+            </div>
+
+            <div class="cmp-download reveal">
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.mezzmr.cmp"
+                    class="btn-primary btn-play"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    GET ON GOOGLE PLAY
+                </a>
+
+                <div class="cmp-legal">
+                    <a href="privacy-policy.html"> PRIVACY POLICY </a>
+
+                    <a href="terms-of-service.html"> TERMS & CONDITIONS </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+            <div class="footer-left">CHECKMATE PROTOCOL // SECTOR VII</div>
+
+            <div class="footer-logo">CMP<span class="accent">VII</span></div>
+
+            <div class="footer-right">
+                <a
+                    href="privacy-policy.html"
+                    style="color: inherit; text-decoration: none"
+                >
+                    PRIVACY
+                </a>
+
+                /
+
+                <a
+                    href="terms-of-service.html"
+                    style="color: inherit; text-decoration: none"
+                >
+                    TERMS
+                </a>
+            </div>
+        </footer>
+
+        <!-- SCRIPT -->
+
+        <script src="script.js"></script>
+    </body>
+</html>
