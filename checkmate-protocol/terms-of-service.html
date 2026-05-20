@@ -4,158 +4,722 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Terms of Service — Checkmate Protocol</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --bg: #141414;
+                --bg-raised: #1a1a1a;
+                --text: #d8d8d8;
+                --text-mid: #a0a0a0;
+                --text-dim: #505050;
+                --accent: #c84040;
+                --border: rgba(255, 255, 255, 0.07);
+                --border-hard: rgba(255, 255, 255, 0.13);
+                --mono: "Share Tech Mono", monospace;
+                --body: "Rajdhani", sans-serif;
+            }
+            html {
+                font-size: 16px;
+                scroll-behavior: smooth;
+            }
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--body);
+                font-weight: 400;
+                line-height: 1.7;
+                letter-spacing: 0.01em;
+                min-height: 100vh;
+            }
+
+            /* NAV */
+            .nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 48px;
+                border-bottom: 1px solid var(--border);
+                background: rgba(20, 20, 20, 0.97);
+                backdrop-filter: blur(8px);
+            }
+            .nav-logo {
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                text-decoration: none;
+                color: var(--text-mid);
+                letter-spacing: 0.14em;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .nav-logo span {
+                color: var(--accent);
+            }
+            .nav-crumb {
+                font-family: var(--mono);
+                font-size: 0.58rem;
+                letter-spacing: 0.16em;
+                color: var(--text-dim);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .nav-crumb a {
+                color: var(--text-dim);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .nav-crumb a:hover {
+                color: var(--accent);
+            }
+
+            /* LAYOUT */
+            .wrap {
+                max-width: 780px;
+                margin: 0 auto;
+                padding: 100px 48px 80px;
+            }
+
+            /* HEADER */
+            .doc-header {
+                padding-bottom: 28px;
+                margin-bottom: 36px;
+                border-bottom: 1px solid var(--border-hard);
+            }
+            .doc-eyebrow {
+                font-family: var(--mono);
+                font-size: 0.58rem;
+                letter-spacing: 0.22em;
+                color: var(--accent);
+                margin-bottom: 14px;
+            }
+            .doc-title {
+                font-family: var(--mono);
+                font-size: clamp(1.4rem, 4vw, 2rem);
+                font-weight: 400;
+                letter-spacing: 0.1em;
+                color: var(--text);
+                margin-bottom: 20px;
+            }
+            .doc-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                border: 1px solid var(--border);
+            }
+            .meta-row {
+                display: grid;
+                grid-template-columns: 160px 1fr;
+                border-bottom: 1px solid var(--border);
+            }
+            .meta-row:last-child {
+                border-bottom: none;
+            }
+            .meta-key {
+                font-family: var(--mono);
+                font-size: 0.55rem;
+                letter-spacing: 0.16em;
+                color: var(--text-dim);
+                padding: 10px 16px;
+                border-right: 1px solid var(--border);
+            }
+            .meta-val {
+                font-family: var(--mono);
+                font-size: 0.62rem;
+                letter-spacing: 0.1em;
+                color: var(--text-mid);
+                padding: 10px 16px;
+            }
+
+            /* NOTICE */
+            .notice {
+                background: var(--bg-raised);
+                border-left: 2px solid var(--accent);
+                padding: 14px 20px;
+                margin-bottom: 48px;
+                font-family: var(--mono);
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+                color: var(--text-dim);
+                line-height: 1.8;
+            }
+
+            /* SECTIONS */
+            .section {
+                margin-bottom: 40px;
+            }
+            .section-heading {
+                display: flex;
+                align-items: baseline;
+                gap: 14px;
+                margin-bottom: 14px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--border);
+            }
+            .section-num {
+                font-family: var(--mono);
+                font-size: 0.52rem;
+                letter-spacing: 0.2em;
+                color: var(--accent);
+            }
+            .section-title {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                letter-spacing: 0.16em;
+                color: var(--text);
+            }
+            .section-body {
+                font-size: 1rem;
+                color: var(--text-mid);
+                line-height: 1.75;
+                letter-spacing: 0.02em;
+            }
+            .section-body p {
+                margin-bottom: 12px;
+            }
+            .section-body p:last-child {
+                margin-bottom: 0;
+            }
+            .section-body strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+            .section-body a {
+                color: var(--accent);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(200, 64, 64, 0.3);
+                transition: border-color 0.2s;
+            }
+            .section-body a:hover {
+                border-bottom-color: var(--accent);
+            }
+            .section-body ul {
+                padding-left: 14px;
+                margin: 10px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .section-body ul li::marker {
+                color: var(--accent);
+            }
+
+            /* FOOTER */
+            .footer {
+                border-top: 1px solid var(--border);
+                padding: 20px 48px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .footer-left {
+                font-family: var(--mono);
+                font-size: 0.54rem;
+                letter-spacing: 0.14em;
+                color: var(--text-dim);
+            }
+            .footer-right {
+                display: flex;
+                gap: 20px;
+            }
+            .footer-link {
+                font-family: var(--mono);
+                font-size: 0.54rem;
+                letter-spacing: 0.14em;
+                color: var(--text-dim);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .footer-link:hover {
+                color: var(--accent);
+            }
+            .footer-link.active {
+                color: var(--text-mid);
+            }
+
+            @media (max-width: 768px) {
+                .nav {
+                    padding: 14px 20px;
+                }
+                .wrap {
+                    padding: 88px 20px 60px;
+                }
+                .footer {
+                    flex-direction: column;
+                    gap: 8px;
+                    padding: 16px 20px;
+                }
+                .meta-row {
+                    grid-template-columns: 120px 1fr;
+                }
+            }
+            @media (max-width: 480px) {
+                .nav-crumb {
+                    display: none;
+                }
+                .wrap {
+                    padding: 80px 16px 52px;
+                }
+                .meta-row {
+                    grid-template-columns: 1fr;
+                }
+                .meta-key {
+                    border-right: none;
+                    border-bottom: 1px solid var(--border);
+                    padding: 8px 14px 4px;
+                }
+                .meta-val {
+                    padding: 4px 14px 10px;
+                }
+                .footer {
+                    padding: 14px 16px;
+                }
+            }
+        </style>
     </head>
-    <body
-        style="
-            max-width: 680px;
-            margin: 60px auto;
-            padding: 0 24px;
-            font-family: Georgia, serif;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #111;
-        "
-    >
-        <h1>Terms of Service</h1>
-        <p>
-            <strong>Checkmate Protocol</strong><br />
-            Developed and published by <strong>Sector VII</strong><br />
-            Last updated: May 20, 2025
-        </p>
+    <body>
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">S<span>VII</span></a>
+            <div class="nav-crumb">
+                <a href="index.html">CHECKMATE PROTOCOL</a>
+                <span style="opacity: 0.4">//</span>
+                <span style="color: var(--text-mid)">TERMS OF SERVICE</span>
+            </div>
+        </nav>
 
-        <hr />
+        <div class="wrap">
+            <div class="doc-header">
+                <div class="doc-eyebrow">LEGAL DOCUMENT</div>
+                <h1 class="doc-title">TERMS OF SERVICE</h1>
+                <div class="doc-meta">
+                    <div class="meta-row">
+                        <span class="meta-key">APPLICATION</span>
+                        <span class="meta-val">Checkmate Protocol</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-key">PUBLISHER</span>
+                        <span class="meta-val">Sector VII</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-key">LAST UPDATED</span>
+                        <span class="meta-val">May 20, 2026</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-key">CONTACT</span>
+                        <span class="meta-val"
+                            ><a
+                                href="mailto:sec7orvii@gmail.com"
+                                style="
+                                    color: var(--accent);
+                                    text-decoration: none;
+                                "
+                                >sec7orvii@gmail.com</a
+                            ></span
+                        >
+                    </div>
+                </div>
+            </div>
 
-        <h2>1. Acceptance of Terms</h2>
-        <p>
-            By downloading, installing, or playing Checkmate Protocol ("the
-            App"), you agree to be bound by these Terms of Service ("Terms"). If
-            you do not agree, do not use the App.
-        </p>
+            <div class="notice">
+                By downloading, installing, or using Checkmate Protocol, you
+                agree to be bound by these Terms of Service. If you do not agree
+                to these Terms, do not use the App.
+            </div>
 
-        <h2>2. License</h2>
-        <p>
-            Sector VII grants you a personal, non-exclusive, non-transferable,
-            revocable license to use the App for your own private,
-            non-commercial entertainment purposes. This license does not include
-            the right to copy, modify, distribute, sell, sublicense, or
-            reverse-engineer any part of the App.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">01</span>
+                    <h2 class="section-title">ACCEPTANCE OF TERMS</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        By downloading, installing, or using Checkmate Protocol
+                        ("the App"), you agree to be bound by these Terms of
+                        Service ("Terms"). If you do not agree to these Terms,
+                        do not use the App.
+                    </p>
+                </div>
+            </div>
 
-        <h2>3. Purchase and Refunds</h2>
-        <p>
-            The App is available as a one-time paid purchase through Google
-            Play. All purchases are processed by Google LLC. Refund requests are
-            handled according to Google Play's refund policy, which is available
-            at
-            <a href="https://support.google.com/googleplay/answer/2479637"
-                >support.google.com/googleplay</a
-            >. Sector VII has no direct control over purchase transactions or
-            refund decisions made by Google.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">02</span>
+                    <h2 class="section-title">LICENSE TO USE THE APP</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Subject to your compliance with these Terms, Sector VII
+                        grants you a
+                        <strong
+                            >limited, non-exclusive, non-transferable, revocable
+                            license</strong
+                        >
+                        to install and use the App for personal, non-commercial
+                        purposes. This license does not grant ownership of the
+                        App or any of its content.
+                    </p>
+                    <p>You may not:</p>
+                    <ul>
+                        <li>
+                            Copy, modify, or distribute the App except as
+                            permitted by law
+                        </li>
+                        <li>
+                            Reverse engineer, decompile, or disassemble the App
+                            except where legally allowed
+                        </li>
+                        <li>
+                            Use the App for commercial resale, tournament
+                            resale, or paid redistribution
+                        </li>
+                        <li>
+                            Exploit the App for unauthorized commercial purposes
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        <h2>4. Google Play Games Services</h2>
-        <p>
-            The App uses Google Play Games Services (GPGS) to enable sign-in,
-            game saves, and achievements. Your use of GPGS is subject to
-            Google's Terms of Service at
-            <a href="https://policies.google.com/terms"
-                >policies.google.com/terms</a
-            >. Sector VII is not responsible for the availability, performance,
-            or conduct of Google's services.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">03</span>
+                    <h2 class="section-title">
+                        OWNERSHIP AND INTELLECTUAL PROPERTY
+                    </h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        All rights, title, and interest in the App — including
+                        source code, game design, graphics and visual assets,
+                        UI/UX design, and branding and identity — are owned by
+                        Sector VII, except where otherwise stated.
+                    </p>
+                    <p><strong>Third-Party Assets</strong></p>
+                    <p>
+                        The App uses audio assets from Freesound.org licensed
+                        under CC0 (public domain dedication). These assets are
+                        used in compliance with their respective licenses. No
+                        ownership is claimed over CC0-licensed third-party audio
+                        content.
+                    </p>
+                </div>
+            </div>
 
-        <h2>5. Intellectual Property</h2>
-        <p>
-            All content within the App — including but not limited to game
-            design, artwork, code, audio, and text — is the property of Sector
-            VII and is protected by applicable copyright and intellectual
-            property laws. You may not reproduce, distribute, or create
-            derivative works from any part of the App without prior written
-            permission.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">04</span>
+                    <h2 class="section-title">
+                        GAME FEATURES AND USE RESTRICTIONS
+                    </h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Checkmate Protocol is a chess-based strategy game that
+                        may include optional local (LAN) multiplayer
+                        functionality. You agree not to:
+                    </p>
+                    <ul>
+                        <li>
+                            Cheat, exploit, or manipulate game systems in a way
+                            not intended by design
+                        </li>
+                        <li>
+                            Use modified or unauthorized versions of the App in
+                            multiplayer sessions
+                        </li>
+                        <li>
+                            Interfere with the normal operation of the App or
+                            other users' gameplay experience
+                        </li>
+                    </ul>
+                    <p>
+                        LAN multiplayer operates over local Wi-Fi or hotspot
+                        connections between devices. No central servers are
+                        operated by Sector VII.
+                    </p>
+                </div>
+            </div>
 
-        <h2>6. Acceptable Use</h2>
-        <p>
-            You agree to use the App only for its intended purpose. You agree
-            not to:
-        </p>
-        <ul>
-            <li>Modify, hack, or tamper with the App or its save data</li>
-            <li>
-                Use the App in any way that violates applicable laws or
-                regulations
-            </li>
-            <li>
-                Attempt to exploit bugs or glitches for purposes beyond normal
-                gameplay
-            </li>
-        </ul>
-        <p>
-            Sector VII does not operate game servers or enforce these terms
-            through active monitoring. These restrictions exist to set clear
-            expectations about acceptable use. We reserve no active enforcement
-            powers beyond what Google Play provides.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">05</span>
+                    <h2 class="section-title">MULTIPLAYER DISCLAIMER</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App supports peer-to-peer LAN multiplayer
+                        connectivity. You acknowledge that:
+                    </p>
+                    <ul>
+                        <li>
+                            Multiplayer sessions are established directly
+                            between devices on a local network
+                        </li>
+                        <li>
+                            Connection stability depends on your device and
+                            network environment
+                        </li>
+                        <li>
+                            Sector VII does not guarantee uninterrupted
+                            multiplayer performance
+                        </li>
+                        <li>
+                            No matchmaking servers or online infrastructure are
+                            provided
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        <h2>7. Disclaimer of Warranties</h2>
-        <p>
-            The App is provided "as is" and "as available" without warranties of
-            any kind, express or implied. Sector VII does not warrant that the
-            App will be error-free, uninterrupted, or free of bugs. You use the
-            App at your own risk.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">06</span>
+                    <h2 class="section-title">
+                        PAID APPLICATION AND PURCHASES
+                    </h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App is distributed as a one-time paid application
+                        via Google Play. All payments, billing, and refund
+                        processing are handled by Google Play in accordance with
+                        their policies. Sector VII does not directly process
+                        payments or maintain payment information.
+                    </p>
+                </div>
+            </div>
 
-        <h2>8. Limitation of Liability</h2>
-        <p>
-            To the fullest extent permitted by applicable law, Sector VII shall
-            not be liable for any indirect, incidental, special, consequential,
-            or punitive damages arising from your use of or inability to use the
-            App, including but not limited to loss of game progress, device
-            issues, or service interruptions. In no event shall Sector VII's
-            total liability to you exceed the amount you paid to purchase the
-            App.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">07</span>
+                    <h2 class="section-title">REFUND POLICY</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Refunds are handled exclusively through Google Play's
+                        refund system and policies. We do not control or
+                        override refund decisions made by Google Play.
+                    </p>
+                    <p>
+                        Google Play refund policy:
+                        <a
+                            href="https://support.google.com/googleplay/answer/2479637"
+                            target="_blank"
+                            rel="noopener"
+                            >support.google.com/googleplay/answer/2479637</a
+                        >
+                    </p>
+                </div>
+            </div>
 
-        <h2>9. Third-Party Services</h2>
-        <p>
-            The App relies on Google Play and Google Play Games Services, which
-            are third-party platforms. Sector VII is not responsible for any
-            issues, outages, data loss, or policy changes arising from those
-            platforms. Your use of those services is governed by Google's own
-            terms.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">08</span>
+                    <h2 class="section-title">USER RESPONSIBILITIES</h2>
+                </div>
+                <div class="section-body">
+                    <p>You are responsible for:</p>
+                    <ul>
+                        <li>
+                            Maintaining the security of your device and Google
+                            account
+                        </li>
+                        <li>
+                            Ensuring your device meets minimum requirements to
+                            run the App
+                        </li>
+                        <li>
+                            Complying with applicable laws while using the App
+                        </li>
+                    </ul>
+                    <p>
+                        You are solely responsible for any data loss that may
+                        occur due to device failure, user action, or external
+                        factors.
+                    </p>
+                </div>
+            </div>
 
-        <h2>10. Changes to the App</h2>
-        <p>
-            Sector VII reserves the right to update, modify, or discontinue the
-            App at any time without notice. We are under no obligation to
-            maintain, support, or continue development of the App.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">09</span>
+                    <h2 class="section-title">UPDATES AND CHANGES</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App may receive updates including bug fixes,
+                        performance improvements, or feature changes. Sector VII
+                        reserves the right to modify or discontinue any part of
+                        the App at any time without prior notice. Continued use
+                        of the App after updates constitutes acceptance of those
+                        changes.
+                    </p>
+                </div>
+            </div>
 
-        <h2>11. Changes to These Terms</h2>
-        <p>
-            We may update these Terms from time to time. When we do, we will
-            revise the "Last updated" date above. Continued use of the App after
-            changes are posted constitutes acceptance of the revised Terms.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">10</span>
+                    <h2 class="section-title">TERMINATION</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        This license is effective until terminated. Sector VII
+                        may suspend or terminate your license to use the App if
+                        you violate these Terms, attempt to misuse or reverse
+                        engineer the App, or engage in fraudulent or harmful
+                        activity involving the App.
+                    </p>
+                    <p>
+                        Upon termination, you must cease all use of the App and
+                        delete all copies in your possession.
+                    </p>
+                </div>
+            </div>
 
-        <h2>12. Governing Law</h2>
-        <p>
-            These Terms are governed by the laws of the jurisdiction in which
-            Sector VII operates, without regard to conflict of law principles.
-            Any disputes arising from these Terms or the App will be subject to
-            the exclusive jurisdiction of the courts of that jurisdiction.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">11</span>
+                    <h2 class="section-title">DISCLAIMER OF WARRANTIES</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App is provided <strong>"as is"</strong> and
+                        <strong>"as available,"</strong> without warranties of
+                        any kind. To the maximum extent permitted by law, Sector
+                        VII disclaims all warranties, including uninterrupted or
+                        error-free operation, fitness for a particular purpose,
+                        compatibility with all devices or systems, and freedom
+                        from data loss or save file corruption.
+                    </p>
+                </div>
+            </div>
 
-        <h2>13. Contact</h2>
-        <p>
-            If you have any questions about these Terms, contact us at:<br />
-            <strong>sec7orvii@gmail.com</strong>
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">12</span>
+                    <h2 class="section-title">LIMITATION OF LIABILITY</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        To the maximum extent permitted by law, Sector VII shall
+                        not be liable for any indirect, incidental, or
+                        consequential damages, data loss or corruption, device
+                        malfunctions or system failures, loss of progress or
+                        gameplay data, or multiplayer connection issues. Use of
+                        the App is at your own risk.
+                    </p>
+                </div>
+            </div>
 
-        <hr />
-        <p style="font-size: 14px; color: #555">
-            © 2025 Sector VII. All rights reserved.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">13</span>
+                    <h2 class="section-title">AGE AND ELIGIBILITY</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App is intended for general audiences. By using the
+                        App, you confirm that you are allowed to do so under
+                        applicable local laws. If you are a minor in your
+                        jurisdiction, you must have permission from a parent or
+                        legal guardian.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">14</span>
+                    <h2 class="section-title">GOVERNING LAW</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        These Terms are governed by the laws applicable in your
+                        country of residence, unless otherwise required by
+                        mandatory local consumer protection laws.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">15</span>
+                    <h2 class="section-title">THIRD-PARTY SERVICES</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App integrates services provided by
+                        <strong>Google</strong> (Google Play services, including
+                        authentication and cloud saves where enabled). These
+                        services are governed by their own terms and privacy
+                        policies.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">16</span>
+                    <h2 class="section-title">CONTACT INFORMATION</h2>
+                </div>
+                <div class="section-body">
+                    <p>For questions regarding these Terms, contact:</p>
+                    <p>
+                        <strong>Sector VII</strong><br />
+                        Email:
+                        <a href="mailto:sec7orvii@gmail.com"
+                            >sec7orvii@gmail.com</a
+                        >
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">17</span>
+                    <h2 class="section-title">ENTIRE AGREEMENT</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        These Terms constitute the entire agreement between you
+                        and Sector VII regarding the App and supersede any prior
+                        understandings or agreements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-left">
+                © 2026 Sector VII. All rights reserved.
+            </div>
+            <div class="footer-right">
+                <a href="privacy-policy.html" class="footer-link"
+                    >Privacy Policy</a
+                >
+                <a href="terms-of-service.html" class="footer-link active"
+                    >Terms of Service</a
+                >
+            </div>
+        </footer>
     </body>
 </html>

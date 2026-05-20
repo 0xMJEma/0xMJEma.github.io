@@ -4,150 +4,728 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Privacy Policy — Checkmate Protocol</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --bg: #141414;
+                --bg-raised: #1a1a1a;
+                --text: #d8d8d8;
+                --text-mid: #a0a0a0;
+                --text-dim: #505050;
+                --accent: #c84040;
+                --border: rgba(255, 255, 255, 0.07);
+                --border-hard: rgba(255, 255, 255, 0.13);
+                --mono: "Share Tech Mono", monospace;
+                --body: "Rajdhani", sans-serif;
+            }
+            html {
+                font-size: 16px;
+                scroll-behavior: smooth;
+            }
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--body);
+                font-weight: 400;
+                line-height: 1.7;
+                letter-spacing: 0.01em;
+                min-height: 100vh;
+            }
+
+            /* NAV */
+            .nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 48px;
+                border-bottom: 1px solid var(--border);
+                background: rgba(20, 20, 20, 0.97);
+                backdrop-filter: blur(8px);
+            }
+            .nav-logo {
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                text-decoration: none;
+                color: var(--text-mid);
+                letter-spacing: 0.14em;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .nav-logo span {
+                color: var(--accent);
+            }
+            .nav-crumb {
+                font-family: var(--mono);
+                font-size: 0.58rem;
+                letter-spacing: 0.16em;
+                color: var(--text-dim);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .nav-crumb a {
+                color: var(--text-dim);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .nav-crumb a:hover {
+                color: var(--accent);
+            }
+
+            /* LAYOUT */
+            .wrap {
+                max-width: 780px;
+                margin: 0 auto;
+                padding: 100px 48px 80px;
+            }
+
+            /* HEADER */
+            .doc-header {
+                padding-bottom: 28px;
+                margin-bottom: 36px;
+                border-bottom: 1px solid var(--border-hard);
+            }
+            .doc-eyebrow {
+                font-family: var(--mono);
+                font-size: 0.58rem;
+                letter-spacing: 0.22em;
+                color: var(--accent);
+                margin-bottom: 14px;
+            }
+            .doc-title {
+                font-family: var(--mono);
+                font-size: clamp(1.4rem, 4vw, 2rem);
+                font-weight: 400;
+                letter-spacing: 0.1em;
+                color: var(--text);
+                margin-bottom: 20px;
+            }
+            .doc-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                border: 1px solid var(--border);
+            }
+            .meta-row {
+                display: grid;
+                grid-template-columns: 160px 1fr;
+                border-bottom: 1px solid var(--border);
+            }
+            .meta-row:last-child {
+                border-bottom: none;
+            }
+            .meta-key {
+                font-family: var(--mono);
+                font-size: 0.55rem;
+                letter-spacing: 0.16em;
+                color: var(--text-dim);
+                padding: 10px 16px;
+                border-right: 1px solid var(--border);
+            }
+            .meta-val {
+                font-family: var(--mono);
+                font-size: 0.62rem;
+                letter-spacing: 0.1em;
+                color: var(--text-mid);
+                padding: 10px 16px;
+            }
+
+            /* NOTICE */
+            .notice {
+                background: var(--bg-raised);
+                border-left: 2px solid var(--accent);
+                padding: 14px 20px;
+                margin-bottom: 48px;
+                font-family: var(--mono);
+                font-size: 0.6rem;
+                letter-spacing: 0.1em;
+                color: var(--text-dim);
+                line-height: 1.8;
+            }
+
+            /* SECTIONS */
+            .section {
+                margin-bottom: 40px;
+            }
+            .section-heading {
+                display: flex;
+                align-items: baseline;
+                gap: 14px;
+                margin-bottom: 14px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--border);
+            }
+            .section-num {
+                font-family: var(--mono);
+                font-size: 0.52rem;
+                letter-spacing: 0.2em;
+                color: var(--accent);
+            }
+            .section-title {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                letter-spacing: 0.16em;
+                color: var(--text);
+            }
+            .section-body {
+                font-size: 1rem;
+                color: var(--text-mid);
+                line-height: 1.75;
+                letter-spacing: 0.02em;
+            }
+            .section-body p {
+                margin-bottom: 12px;
+            }
+            .section-body p:last-child {
+                margin-bottom: 0;
+            }
+            .section-body strong {
+                color: var(--text);
+                font-weight: 600;
+            }
+            .section-body a {
+                color: var(--accent);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(200, 64, 64, 0.3);
+                transition: border-color 0.2s;
+            }
+            .section-body a:hover {
+                border-bottom-color: var(--accent);
+            }
+            .section-body ul {
+                padding-left: 14px;
+                margin: 10px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .section-body ul li::marker {
+                color: var(--accent);
+            }
+
+            /* PERMISSIONS TABLE */
+            .perm-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 14px 0;
+                font-family: var(--mono);
+            }
+            .perm-table th {
+                font-size: 0.52rem;
+                letter-spacing: 0.18em;
+                color: var(--text-dim);
+                text-align: left;
+                padding: 10px 14px;
+                border-bottom: 1px solid var(--border-hard);
+                font-weight: 400;
+            }
+            .perm-table td {
+                font-size: 0.6rem;
+                letter-spacing: 0.08em;
+                color: var(--text-mid);
+                padding: 10px 14px;
+                border-bottom: 1px solid var(--border);
+                vertical-align: top;
+            }
+            .perm-table tr:last-child td {
+                border-bottom: none;
+            }
+            .perm-table td:first-child {
+                color: var(--text);
+                font-size: 0.58rem;
+                letter-spacing: 0.12em;
+                width: 200px;
+            }
+
+            /* FOOTER */
+            .footer {
+                border-top: 1px solid var(--border);
+                padding: 20px 48px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .footer-left {
+                font-family: var(--mono);
+                font-size: 0.54rem;
+                letter-spacing: 0.14em;
+                color: var(--text-dim);
+            }
+            .footer-right {
+                display: flex;
+                gap: 20px;
+            }
+            .footer-link {
+                font-family: var(--mono);
+                font-size: 0.54rem;
+                letter-spacing: 0.14em;
+                color: var(--text-dim);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .footer-link:hover {
+                color: var(--accent);
+            }
+            .footer-link.active {
+                color: var(--text-mid);
+            }
+
+            @media (max-width: 768px) {
+                .nav {
+                    padding: 14px 20px;
+                }
+                .wrap {
+                    padding: 88px 20px 60px;
+                }
+                .footer {
+                    flex-direction: column;
+                    gap: 8px;
+                    padding: 16px 20px;
+                }
+                .meta-row {
+                    grid-template-columns: 120px 1fr;
+                }
+            }
+            @media (max-width: 480px) {
+                .nav-crumb {
+                    display: none;
+                }
+                .wrap {
+                    padding: 80px 16px 52px;
+                }
+                .meta-row {
+                    grid-template-columns: 1fr;
+                }
+                .meta-key {
+                    border-right: none;
+                    border-bottom: 1px solid var(--border);
+                    padding: 8px 14px 4px;
+                }
+                .meta-val {
+                    padding: 4px 14px 10px;
+                }
+                .perm-table td:first-child {
+                    width: auto;
+                }
+                .footer {
+                    padding: 14px 16px;
+                }
+            }
+        </style>
     </head>
-    <body
-        style="
-            max-width: 680px;
-            margin: 60px auto;
-            padding: 0 24px;
-            font-family: Georgia, serif;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #111;
-        "
-    >
-        <h1>Privacy Policy</h1>
-        <p>
-            <strong>Checkmate Protocol</strong><br />
-            Developed and published by <strong>Sector VII</strong><br />
-            Last updated: May 20, 2025
-        </p>
+    <body>
+        <nav class="nav">
+            <a href="index.html" class="nav-logo">S<span>VII</span></a>
+            <div class="nav-crumb">
+                <a href="index.html">CHECKMATE PROTOCOL</a>
+                <span style="opacity: 0.4">//</span>
+                <span style="color: var(--text-mid)">PRIVACY POLICY</span>
+            </div>
+        </nav>
 
-        <hr />
+        <div class="wrap">
+            <div class="doc-header">
+                <div class="doc-eyebrow">LEGAL DOCUMENT</div>
+                <h1 class="doc-title">PRIVACY POLICY</h1>
+                <div class="doc-meta">
+                    <div class="meta-row">
+                        <span class="meta-key">APPLICATION</span>
+                        <span class="meta-val">Checkmate Protocol</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-key">DEVELOPER</span>
+                        <span class="meta-val">Sector VII</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-key">LAST UPDATED</span>
+                        <span class="meta-val">May 20, 2026</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-key">CONTACT</span>
+                        <span class="meta-val"
+                            ><a
+                                href="mailto:sec7orvii@gmail.com"
+                                style="
+                                    color: var(--accent);
+                                    text-decoration: none;
+                                "
+                                >sec7orvii@gmail.com</a
+                            ></span
+                        >
+                    </div>
+                </div>
+            </div>
 
-        <h2>Overview</h2>
-        <p>
-            This Privacy Policy explains how Checkmate Protocol ("the App")
-            handles user information. We do not run our own servers or
-            databases. However, the App uses Google Play Games Services, which
-            does collect and process certain data on our behalf. This policy
-            explains what that means for you.
-        </p>
+            <div class="notice">
+                Checkmate Protocol is a paid offline chess game with optional
+                LAN multiplayer and Google Play Games Services integration. We
+                do not operate our own online servers, advertising systems,
+                analytics platforms, or account systems. By using the App, you
+                agree to the practices described in this policy.
+            </div>
 
-        <h2>Information Collected</h2>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">01</span>
+                    <h2 class="section-title">INFORMATION WE PROCESS</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        We do not independently collect, store, sell, or
+                        monetize personal information through servers operated
+                        by Sector VII.
+                    </p>
+                    <p>
+                        Certain information may be processed locally on your
+                        device or by third-party platform providers necessary
+                        for core functionality. This may include:
+                    </p>
+                    <ul>
+                        <li>Local game save data stored on your device</li>
+                        <li>Gameplay progress and achievements</li>
+                        <li>Google Play Games Services account identifiers</li>
+                        <li>
+                            Local network connection data required for LAN
+                            multiplayer
+                        </li>
+                    </ul>
+                    <p>
+                        We do not use your information for advertising,
+                        profiling, or behavioral tracking.
+                    </p>
+                </div>
+            </div>
 
-        <h3>Data We Collect Directly</h3>
-        <p>
-            We do not independently collect, store, or sell any personal
-            information. The App does not transmit data to any servers operated
-            by Sector VII.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">02</span>
+                    <h2 class="section-title">GOOGLE PLAY GAMES SERVICES</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App integrates Google Play Games Services ("GPGS"),
+                        provided by Google, to support cloud saves,
+                        achievements, and player authentication. When using
+                        GPGS, Google may process information such as:
+                    </p>
+                    <ul>
+                        <li>Your Google Play Games player ID</li>
+                        <li>
+                            Profile name and avatar associated with your Google
+                            account
+                        </li>
+                        <li>Saved game progress</li>
+                        <li>Achievements and gameplay statistics</li>
+                    </ul>
+                    <p>
+                        This information is processed by Google in accordance
+                        with their own policies. We do not receive your Google
+                        account password or direct access to your Google account
+                        credentials. Cloud save functionality operates through
+                        Google Play Games Services and may be synchronized
+                        between your devices through your Google account.
+                    </p>
+                    <p>
+                        Google Privacy Policy:
+                        <a
+                            href="https://policies.google.com/privacy"
+                            target="_blank"
+                            rel="noopener"
+                            >policies.google.com/privacy</a
+                        ><br />
+                        Google Play Games Services:
+                        <a
+                            href="https://developers.google.com/games/services"
+                            target="_blank"
+                            rel="noopener"
+                            >developers.google.com/games/services</a
+                        >
+                    </p>
+                </div>
+            </div>
 
-        <h3>Diagnostic and Performance Data</h3>
-        <p>
-            The App may generate crash reports and performance diagnostics
-            (including CPU and RAM usage data and bot AI performance logs) when
-            the App encounters an error. This data is surfaced to us through the
-            Google Play Console and is used solely to identify and fix technical
-            issues. It is not linked to your identity.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">03</span>
+                    <h2 class="section-title">LAN MULTIPLAYER</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App includes optional peer-to-peer LAN multiplayer
+                        using local Wi-Fi or mobile hotspot connections. During
+                        LAN sessions:
+                    </p>
+                    <ul>
+                        <li>
+                            Devices communicate directly with each other over
+                            the local network
+                        </li>
+                        <li>
+                            Temporary local network data such as local IP
+                            addresses and session data may be used to establish
+                            and maintain gameplay connections
+                        </li>
+                        <li>
+                            Multiplayer traffic is not routed through servers
+                            operated by Sector VII
+                        </li>
+                    </ul>
+                    <p>
+                        We do not operate matchmaking servers, online game
+                        servers, or centralized multiplayer infrastructure.
+                    </p>
+                </div>
+            </div>
 
-        <h3>Google Play Games Services</h3>
-        <p>
-            The App integrates Google Play Games Services (GPGS), a platform
-            provided by Google LLC. When you sign in with GPGS, Google may
-            collect and process the following:
-        </p>
-        <ul>
-            <li>Your Google account display name and profile picture</li>
-            <li>A unique player ID assigned by Google</li>
-            <li>Game save data (used to save and load your game progress)</li>
-            <li>Achievements and gameplay statistics</li>
-        </ul>
-        <p>
-            This data is processed by Google under their own Privacy Policy. We
-            do not have direct access to your Google account credentials. Save
-            data stored via GPGS is accessible to us only in aggregate or as
-            required to operate the save/load feature.
-        </p>
-        <p>
-            Google's Privacy Policy:
-            <a href="https://policies.google.com/privacy"
-                >https://policies.google.com/privacy</a
-            >
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">04</span>
+                    <h2 class="section-title">PERMISSIONS</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App may request the following Android permissions:
+                    </p>
+                    <table class="perm-table">
+                        <thead>
+                            <tr>
+                                <th>PERMISSION</th>
+                                <th>PURPOSE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INTERNET</td>
+                                <td>
+                                    Required for Google Play Games Services
+                                    functionality and LAN multiplayer
+                                    connectivity
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ACCESS_NETWORK_STATE</td>
+                                <td>
+                                    Used to determine network availability for
+                                    multiplayer and service connectivity
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        The App does not access contacts, photos, microphone
+                        data, precise location data, or unrelated device
+                        information.
+                    </p>
+                </div>
+            </div>
 
-        <h2>How We Use Information</h2>
-        <ul>
-            <li>
-                Crash and performance data is used exclusively to diagnose and
-                fix bugs.
-            </li>
-            <li>
-                GPGS data is used to authenticate players and enable save/load
-                functionality.
-            </li>
-            <li>
-                We do not use any data for advertising, profiling, or sale to
-                third parties.
-            </li>
-        </ul>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">05</span>
+                    <h2 class="section-title">DATA STORAGE AND RETENTION</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Game save data may be stored locally on your device or
+                        through Google Play Games Services cloud save
+                        functionality, if enabled. Locally stored data remains
+                        on your device unless removed by uninstalling the App or
+                        clearing application data. Cloud save retention is
+                        managed by Google according to your account settings and
+                        GPGS policies.
+                    </p>
+                    <p>
+                        We do not maintain independent databases containing
+                        player save files.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Third-Party Services</h2>
-        <p>
-            The only third-party service integrated into the App is Google Play
-            Games Services. We do not use any advertising SDKs, analytics
-            platforms, or other third-party data processors.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">06</span>
+                    <h2 class="section-title">ADVERTISING AND ANALYTICS</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App does not contain advertisements, ad tracking
+                        technologies, behavioral profiling systems, third-party
+                        analytics SDKs, or marketing trackers. We do not sell
+                        user data to third parties.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Advertising</h2>
-        <p>The App contains no advertisements.</p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">07</span>
+                    <h2 class="section-title">IN-APP PURCHASES</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App does not contain in-app purchases,
+                        subscriptions, or microtransactions.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Data Retention and Deletion</h2>
-        <p>
-            Crash and performance logs are retained by Google Play Console for a
-            limited period as determined by Google. GPGS save data is retained
-            until you delete it through your Google account settings or
-            uninstall the App. You can manage or delete your Google Play Games
-            data at any time via your Google account at
-            <a href="https://myaccount.google.com">myaccount.google.com</a>.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">08</span>
+                    <h2 class="section-title">CHILDREN'S PRIVACY</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App is intended for general audiences. We do not
+                        knowingly collect personal information from children
+                        under the age of 13 through systems operated by Sector
+                        VII. The App does not include advertising SDKs,
+                        behavioral advertising, or user-generated social
+                        features.
+                    </p>
+                    <p>
+                        If you believe a child has provided information through
+                        Google Play Games Services, please contact Google
+                        directly regarding account and data management.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Children's Privacy</h2>
-        <p>
-            The App is not directed at children under the age of 13. We do not
-            knowingly collect personal information from children under 13. If
-            you believe a child has provided personal information through GPGS,
-            please contact Google directly to request deletion.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">09</span>
+                    <h2 class="section-title">INTERNATIONAL DATA PROCESSING</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Third-party services used by the App, including Google
+                        Play Games Services, may process and store data on
+                        servers located in multiple countries. By using the App,
+                        you understand that information processed by third-party
+                        providers may be transferred and stored outside your
+                        country of residence.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Your Rights</h2>
-        <p>
-            Depending on your location, you may have rights regarding your
-            personal data, including the right to access, correct, or delete it.
-            Since the data processed through GPGS is governed by Google,
-            requests related to that data should be directed to Google. For any
-            other privacy concerns related to this App, contact us directly.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">10</span>
+                    <h2 class="section-title">YOUR RIGHTS</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        Depending on your jurisdiction, you may have rights
+                        regarding your personal data, including the right to
+                        access, correct, request deletion of, or withdraw
+                        consent for your data. Requests relating to Google Play
+                        Games Services data should generally be directed to
+                        Google through your Google account settings.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Changes to This Policy</h2>
-        <p>
-            We may update this Privacy Policy from time to time. When we do, we
-            will revise the "Last updated" date at the top. Continued use of the
-            App after changes are posted constitutes acceptance of the updated
-            policy.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">11</span>
+                    <h2 class="section-title">SECURITY</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        We implement reasonable technical measures to protect
+                        locally stored game data and application functionality.
+                        However, no method of electronic storage or transmission
+                        can be guaranteed to be completely secure.
+                    </p>
+                </div>
+            </div>
 
-        <h2>Contact</h2>
-        <p>
-            If you have questions or concerns about this Privacy Policy, contact
-            us at:<br />
-            <strong>sec7orvii@gmail.com</strong>
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">12</span>
+                    <h2 class="section-title">THIRD-PARTY SERVICES</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        The App currently uses the following third-party
+                        service:
+                        <strong>Google — Google Play Games Services</strong>. We
+                        do not integrate third-party advertising networks or
+                        external analytics providers.
+                    </p>
+                </div>
+            </div>
 
-        <hr />
-        <p style="font-size: 14px; color: #555">
-            © 2025 Sector VII. All rights reserved.
-        </p>
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">13</span>
+                    <h2 class="section-title">CHANGES TO THIS POLICY</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        We may update this Privacy Policy periodically to
+                        reflect changes in functionality, legal requirements, or
+                        platform policies. When updates occur, the "Last
+                        updated" date at the top of this policy will be revised.
+                        Continued use of the App after updates become effective
+                        constitutes acceptance of the revised policy.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-heading">
+                    <span class="section-num">14</span>
+                    <h2 class="section-title">CONTACT</h2>
+                </div>
+                <div class="section-body">
+                    <p>
+                        If you have questions regarding this Privacy Policy,
+                        contact:
+                    </p>
+                    <p>
+                        <strong>Sector VII</strong><br />
+                        Email:
+                        <a href="mailto:sec7orvii@gmail.com"
+                            >sec7orvii@gmail.com</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-left">
+                © 2026 Sector VII. All rights reserved.
+            </div>
+            <div class="footer-right">
+                <a href="privacy-policy.html" class="footer-link active"
+                    >Privacy Policy</a
+                >
+                <a href="terms-of-service.html" class="footer-link"
+                    >Terms of Service</a
+                >
+            </div>
+        </footer>
     </body>
 </html>
