@@ -221,6 +221,33 @@
                 color: var(--accent);
             }
 
+            /* RESTRICTIONS BLOCK */
+            .restrictions {
+                background: var(--bg-raised);
+                border: 1px solid var(--border);
+                padding: 16px 20px;
+                margin: 14px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .restriction-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                font-family: var(--mono);
+                font-size: 0.6rem;
+                letter-spacing: 0.08em;
+                color: var(--text-mid);
+                line-height: 1.6;
+            }
+            .restriction-row::before {
+                content: "✕";
+                color: var(--accent);
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+
             /* PERMISSIONS TABLE */
             .perm-table {
                 width: 100%;
@@ -358,7 +385,7 @@
                     </div>
                     <div class="meta-row">
                         <span class="meta-key">LAST UPDATED</span>
-                        <span class="meta-val">May 20, 2026</span>
+                        <span class="meta-val">May 22, 2026</span>
                     </div>
                     <div class="meta-row">
                         <span class="meta-key">CONTACT</span>
@@ -384,6 +411,7 @@
                 agree to the practices described in this policy.
             </div>
 
+            <!-- 01 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">01</span>
@@ -416,6 +444,7 @@
                 </div>
             </div>
 
+            <!-- 02 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">02</span>
@@ -424,26 +453,70 @@
                 <div class="section-body">
                     <p>
                         The App integrates Google Play Games Services ("GPGS"),
-                        provided by Google, to support cloud saves,
-                        achievements, and player authentication. When using
-                        GPGS, Google may process information such as:
+                        provided by Google, to support player authentication,
+                        cloud saves, achievements, leaderboards, and gameplay
+                        services. When a user signs in with Google Play Games
+                        Services, the App may access and use the following
+                        Google user data:
                     </p>
                     <ul>
-                        <li>Your Google Play Games player ID</li>
+                        <li>Google Play Games player ID</li>
+                        <li>Google account profile name</li>
+                        <li>Google account profile avatar/image</li>
+                        <li>Saved game data and cloud save information</li>
+                        <li>Achievement progress and achievement status</li>
+                        <li>Leaderboard scores and ranking data</li>
                         <li>
-                            Profile name and avatar associated with your Google
-                            account
+                            Basic gameplay profile information required for
+                            Google Play Games functionality
                         </li>
-                        <li>Saved game progress</li>
-                        <li>Achievements and gameplay statistics</li>
                     </ul>
+                    <p>This data is used solely for the following purposes:</p>
+                    <ul>
+                        <li>
+                            Authenticating players into Google Play Games
+                            Services
+                        </li>
+                        <li>
+                            Synchronizing cloud save progress between user
+                            devices
+                        </li>
+                        <li>
+                            Displaying achievements and achievement progress
+                        </li>
+                        <li>Submitting and retrieving leaderboard scores</li>
+                        <li>
+                            Maintaining gameplay-related Play Games
+                            functionality
+                        </li>
+                        <li>
+                            Enabling optional Google Play Games features
+                            requested by the user
+                        </li>
+                    </ul>
+                    <p>Sector VII does not use Google user data for:</p>
+                    <div class="restrictions">
+                        <div class="restriction-row">
+                            Selling or transferring Google user data to third
+                            parties
+                        </div>
+                        <div class="restriction-row">
+                            Advertising, marketing, or behavioral profiling
+                        </div>
+                        <div class="restriction-row">
+                            Analytics beyond what is necessary for GPGS
+                            functionality
+                        </div>
+                        <div class="restriction-row">
+                            Training artificial intelligence or machine learning
+                            models
+                        </div>
+                    </div>
                     <p>
-                        This information is processed by Google in accordance
-                        with their own policies. We do not receive your Google
-                        account password or direct access to your Google account
-                        credentials. Cloud save functionality operates through
-                        Google Play Games Services and may be synchronized
-                        between your devices through your Google account.
+                        Google processes Google Play Games Services data in
+                        accordance with their own privacy policies and terms. We
+                        do not receive or store your Google account password or
+                        direct Google account credentials.
                     </p>
                     <p>
                         Google Privacy Policy:
@@ -464,6 +537,7 @@
                 </div>
             </div>
 
+            <!-- 03 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">03</span>
@@ -497,6 +571,7 @@
                 </div>
             </div>
 
+            <!-- 04 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">04</span>
@@ -539,6 +614,7 @@
                 </div>
             </div>
 
+            <!-- 05 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">05</span>
@@ -561,6 +637,7 @@
                 </div>
             </div>
 
+            <!-- 06 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">06</span>
@@ -576,6 +653,7 @@
                 </div>
             </div>
 
+            <!-- 07 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">07</span>
@@ -589,6 +667,7 @@
                 </div>
             </div>
 
+            <!-- 08 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">08</span>
@@ -611,6 +690,7 @@
                 </div>
             </div>
 
+            <!-- 09 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">09</span>
@@ -628,6 +708,7 @@
                 </div>
             </div>
 
+            <!-- 10 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">10</span>
@@ -645,6 +726,7 @@
                 </div>
             </div>
 
+            <!-- 11 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">11</span>
@@ -660,6 +742,7 @@
                 </div>
             </div>
 
+            <!-- 12 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">12</span>
@@ -676,6 +759,7 @@
                 </div>
             </div>
 
+            <!-- 13 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">13</span>
@@ -693,6 +777,7 @@
                 </div>
             </div>
 
+            <!-- 14 -->
             <div class="section">
                 <div class="section-heading">
                     <span class="section-num">14</span>
